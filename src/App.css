@@ -1,38 +1,176 @@
-.App {
+:root {
+  /* Color palette */
+  --primary-color: #4a6cf7;
+  --secondary-color: #6c757d;
+  --accent-color: #00c8ff;
+  --background-color: #0f172a;
+  --background-light: #1e293b;
+  --text-color: #f8f9fa;
+  --text-muted: #94a3b8;
+  --border-color: #2d3748;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-code: 'Fira Code', monospace;
+
+  /* Transitions */
+  --transition-slow: 0.5s ease;
+  --transition-medium: 0.3s ease;
+  --transition-fast: 0.15s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.content {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.section-title {
+  position: relative;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.highlight {
+  color: var(--primary-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all var(--transition-medium);
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.btn.primary {
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn.primary:hover {
+  background-color: #3a5bd9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(74, 108, 247, 0.3);
+}
+
+.btn.secondary {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn.secondary:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-text {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.loader-text span {
+  opacity: 0;
+  animation: fadeInOut 1.5s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.loader-text span:nth-child(1) { animation-delay: 0.1s; }
+.loader-text span:nth-child(2) { animation-delay: 0.2s; }
+.loader-text span:nth-child(3) { animation-delay: 0.3s; }
+.loader-text span:nth-child(4) { animation-delay: 0.4s; }
+.loader-text span:nth-child(5) { animation-delay: 0.5s; }
+.loader-text span:nth-child(6) { animation-delay: 0.6s; }
+.loader-text span:nth-child(7) { animation-delay: 0.7s; }
+.loader-text span:nth-child(8) { animation-delay: 0.8s; }
+.loader-text span:nth-child(9) { animation-delay: 0.9s; }
+.loader-text span:nth-child(10) { animation-delay: 1s; }
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-up.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 {
+  transition-delay: 0.2s;
+}
+
+.delay-2 {
+  transition-delay: 0.4s;
+}
+
+.delay-3 {
+  transition-delay: 0.6s;
 }
